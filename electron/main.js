@@ -98,3 +98,24 @@ ipcMain.handle('save-todos', (event, todos) => {
   store.set('todos', todos);
   return true;
 });
+
+// IPC 处理：卸载程序
+ipcMain.handle('uninstall-app', async () => {
+  const { shell } = require('electron');
+  const result = await dialog.showMessageBox(mainWindow, {
+    type: 'warning',
+    buttons: ['取消', '确认卸载'],
+    defaultId: 0,
+    title: '卸载 FocusPing',
+    message: '确定要卸载 FocusPing 吗？',
+    detail: '此操作将启动系统卸载程序，所有数据将被清除。'
+  });
+
+  if (result.response === 1) {
+    // 获取卸载程序路径
+    const uninstallerPath = path.join(app.getPath('exe'), '..', 'Uninstall FocusPing.exe');
+    shell.openExternal(uninstallerPath);
+    app.quit();
+  }
+  return result.response === 1;
+});

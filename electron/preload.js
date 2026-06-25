@@ -14,5 +14,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
   saveTodos: (todos) => ipcRenderer.invoke('save-todos', todos),
 
   // 文件选择
-  selectAudioFile: () => ipcRenderer.invoke('select-audio-file')
+  selectAudioFile: () => ipcRenderer.invoke('select-audio-file'),
+
+  // 卸载
+  uninstallApp: () => ipcRenderer.invoke('uninstall-app')
 });

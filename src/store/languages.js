@@ -117,6 +117,12 @@ export const LANGUAGES = {
       todoEmpty: '暂无待办事项',
       todoOverdue: '已过期',
       todoDelete: '删除',
+
+      // 卸载
+      settingsDanger: '危险操作',
+      settingsDangerHint: '卸载将删除所有数据，包括设置、统计和待办事项',
+      settingsUninstall: '卸载程序',
+      settingsUninstalling: '正在卸载...',
     }
   },
   en: {
@@ -236,6 +242,12 @@ export const LANGUAGES = {
       todoEmpty: 'No todos yet',
       todoOverdue: 'Overdue',
       todoDelete: 'Delete',
+
+      // Uninstall
+      settingsDanger: 'Danger Zone',
+      settingsDangerHint: 'Uninstalling will delete all data including settings, statistics and todos',
+      settingsUninstall: 'Uninstall',
+      settingsUninstalling: 'Uninstalling...',
     }
   },
   ja: {
@@ -355,6 +367,12 @@ export const LANGUAGES = {
       todoEmpty: 'TODOなし',
       todoOverdue: '期限切れ',
       todoDelete: '削除',
+
+      // アンインストール
+      settingsDanger: '危険な操作',
+      settingsDangerHint: 'アンインストールすると設定、統計、TODOなどすべてのデータが削除されます',
+      settingsUninstall: 'アンインストール',
+      settingsUninstalling: 'アンインストール中...',
     }
   }
 };

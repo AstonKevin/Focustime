@@ -285,6 +285,24 @@ body {
   box-shadow: var(--shadow-glow);
 }
 
+/* 危险按钮 */
+.btn-danger {
+  background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+}
+
+.btn-danger:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .btn-outline {
   background: transparent;
   border: 1px solid var(--border);
@@ -567,6 +585,35 @@ body {
   align-items: center;
   gap: 10px;
   font-weight: 600;
+}
+
+/* 危险操作区域 */
+.settings-danger {
+  border-color: rgba(255, 71, 87, 0.3);
+}
+
+.settings-danger::before {
+  background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+}
+
+.settings-danger:hover {
+  border-color: rgba(255, 71, 87, 0.5);
+  box-shadow: 0 0 20px rgba(255, 71, 87, 0.15);
+}
+
+.settings-danger:hover::before {
+  opacity: 1;
+}
+
+.settings-danger h3 {
+  color: #ff4757;
+}
+
+.danger-hint {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+  line-height: 1.5;
 }
 
 .setting-item {

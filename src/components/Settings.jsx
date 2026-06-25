@@ -6,6 +6,7 @@ export default function Settings({ settings, onSave }) {
   const { t, theme, lang, themes, languages, changeTheme, changeLang } = useSettings();
   const [localSettings, setLocalSettings] = useState({ ...settings });
   const [saved, setSaved] = useState(false);
+  const [uninstalling, setUninstalling] = useState(false);
 
   const handleChange = (key, value) => {
     setLocalSettings(prev => ({ ...prev, [key]: value }));
@@ -24,6 +25,14 @@ export default function Settings({ settings, onSave }) {
     onSave({ ...localSettings, theme, lang });
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
+  };
+
+  const handleUninstall = async () => {
+    if (window.electronAPI) {
+      setUninstalling(true);
+      await window.electronAPI.uninstallApp();
+      setUninstalling(false);
+    }
   };
 
   return (
@@ -133,6 +142,19 @@ export default function Settings({ settings, onSave }) {
       <div className="settings-actions">
         <button className="btn btn-primary" onClick={handleSave}>
           {saved ? `✓ ${t('settingsSaved')}` : t('settingsSave')}
+        </button>
+      </div>
+
+      {/* Uninstall */}
+      <div className="settings-section settings-danger">
+        <h3>⚠️ {t('settingsDanger')}</h3>
+        <p className="danger-hint">{t('settingsDangerHint')}</p>
+        <button
+          className="btn btn-danger"
+          onClick={handleUninstall}
+          disabled={uninstalling}
+        >
+          {uninstalling ? t('settingsUninstalling') : t('settingsUninstall')}
         </button>
       </div>
     </div>
