@@ -46,7 +46,8 @@ export default function Settings({ settings, onSave }) {
               }}>
                 <span className="theme-icon">{th.icon}</span>
               </div>
-              <span className="theme-name">{lang === 'zh' ? th.name : th.nameEn}</span>
+              <span className="theme-name">{t(`theme${th.id.charAt(0).toUpperCase() + th.id.slice(1)}`)}</span>
+              <span className="theme-desc">{t(`theme${th.id.charAt(0).toUpperCase() + th.id.slice(1)}Desc`)}</span>
             </div>
           ))}
         </div>

@@ -49,6 +49,22 @@ export const LANGUAGES = {
       settingsTheme: '主题风格',
       settingsLanguage: '语言设置',
 
+      // 主题名称
+      themeDark: '暗黑',
+      themeDarkDesc: '经典深色，护眼舒适',
+      themeLight: '亮色',
+      themeLightDesc: '清爽明亮，活力满满',
+      themeCyber: '赛博朋克',
+      themeCyberDesc: '霓虹闪烁，未来科技',
+      themeForest: '森林',
+      themeForestDesc: '自然绿意，放松身心',
+      themeCoast: '海岸',
+      themeCoastDesc: '蓝白相间，清新海风',
+      themePink: '少女',
+      themePinkDesc: '粉色浪漫，甜美可爱',
+      themeOil: '油画',
+      themeOilDesc: '浓郁色彩，艺术质感',
+
       // 统计页
       statsTitle: '统计',
       statsTotalHours: '总时长（小时）',
@@ -124,6 +140,22 @@ export const LANGUAGES = {
       settingsTheme: 'Theme',
       settingsLanguage: 'Language',
 
+      // Theme names
+      themeDark: 'Dark',
+      themeDarkDesc: 'Classic dark, easy on eyes',
+      themeLight: 'Light',
+      themeLightDesc: 'Fresh and bright',
+      themeCyber: 'Cyberpunk',
+      themeCyberDesc: 'Neon glow, futuristic',
+      themeForest: 'Forest',
+      themeForestDesc: 'Natural green, relaxing',
+      themeCoast: 'Coast',
+      themeCoastDesc: 'Blue & white, sea breeze',
+      themePink: 'Pink',
+      themePinkDesc: 'Sweet and lovely',
+      themeOil: 'Oil Painting',
+      themeOilDesc: 'Rich colors, artistic',
+
       // Stats
       statsTitle: 'Statistics',
       statsTotalHours: 'Total Hours',
@@ -198,6 +230,22 @@ export const LANGUAGES = {
       // Theme & Language
       settingsTheme: 'テーマ',
       settingsLanguage: '言語',
+
+      // Theme names
+      themeDark: 'ダーク',
+      themeDarkDesc: '定番のダーク、目に優しい',
+      themeLight: 'ライト',
+      themeLightDesc: '爽やかで明るい',
+      themeCyber: 'サイバーパンク',
+      themeCyberDesc: 'ネオン輝く、未来的',
+      themeForest: 'フォレスト',
+      themeForestDesc: '自然の緑、リラックス',
+      themeCoast: 'コースト',
+      themeCoastDesc: '青と白、海風',
+      themePink: 'ピンク',
+      themePinkDesc: '甘くて可愛い',
+      themeOil: '油絵',
+      themeOilDesc: '豊かな色彩、芸術的',
 
       // Stats
       statsTitle: '統計',
