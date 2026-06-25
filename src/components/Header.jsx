@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSettings } from '../store/SettingsContext';
 
 export default function Header({ currentView, setCurrentView }) {
+  const { t } = useSettings();
+
   const tabs = [
-    { id: 'timer', label: 'Focus', icon: '🎯' },
-    { id: 'settings', label: 'Settings', icon: '⚙️' },
-    { id: 'statistics', label: 'Stats', icon: '📊' }
+    { id: 'timer', label: t('navFocus'), icon: '🎯' },
+    { id: 'settings', label: t('navSettings'), icon: '⚙️' },
+    { id: 'statistics', label: t('navStats'), icon: '📊' }
   ];
 
   return (

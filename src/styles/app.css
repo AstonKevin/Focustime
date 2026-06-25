@@ -789,6 +789,100 @@ body {
   border-top: 1px solid var(--border);
 }
 
+/* ==================== 主题选择器 ==================== */
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.theme-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 8px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.theme-card.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.theme-preview {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-card:hover .theme-preview {
+  transform: scale(1.1);
+}
+
+.theme-icon {
+  font-size: 24px;
+}
+
+.theme-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ==================== 语言选择器 ==================== */
+.lang-grid {
+  display: flex;
+  gap: 12px;
+}
+
+.lang-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.lang-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.lang-card.active {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.lang-icon {
+  font-size: 24px;
+}
+
+.lang-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
 /* ==================== 统计页面 ==================== */
 .statistics-container h2 {
   font-size: 28px;
@@ -1039,6 +1133,14 @@ body {
 
   .sound-presets {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lang-grid {
+    flex-direction: column;
   }
 
   .timer-display {

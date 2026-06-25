@@ -3,12 +3,14 @@ import Header from './components/Header';
 import Timer from './components/Timer';
 import Settings from './components/Settings';
 import Statistics from './components/Statistics';
+import { SettingsProvider, useSettings } from './store/SettingsContext';
 import { useTimer } from './hooks/useTimer';
 import { useRandomSound } from './hooks/useRandomSound';
 import { useStatistics } from './hooks/useStatistics';
 
-export default function App() {
+function AppContent() {
   const [currentView, setCurrentView] = useState('timer');
+  const { t, theme, lang, changeTheme, changeLang } = useSettings();
   const [settings, setSettings] = useState({
     focusDuration: 45,
     minInterval: 3,
@@ -30,7 +32,9 @@ export default function App() {
   useEffect(() => {
     if (window.electronAPI) {
       window.electronAPI.getSettings().then(saved => {
-        if (saved) setSettings(saved);
+        if (saved) {
+          if (saved.focusDuration) setSettings(prev => ({ ...prev, ...saved }));
+        }
       });
     }
   }, []);
@@ -38,7 +42,11 @@ export default function App() {
   const handleSaveSettings = (newSettings) => {
     setSettings(newSettings);
     if (window.electronAPI) {
-      window.electronAPI.saveSettings(newSettings);
+      window.electronAPI.saveSettings({
+        ...newSettings,
+        theme,
+        lang
+      });
     }
   };
 
@@ -81,5 +89,13 @@ export default function App() {
         )}
       </main>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <SettingsProvider>
+      <AppContent />
+    </SettingsProvider>
   );
 }

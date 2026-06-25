@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSettings } from '../store/SettingsContext';
 
 function formatTime(seconds) {
   const mins = Math.floor(seconds / 60);
@@ -27,6 +28,7 @@ export default function Timer({
   settings,
   todayStats
 }) {
+  const { t } = useSettings();
   const totalSeconds = settings.focusDuration * 60;
   const progress = totalSeconds > 0
     ? ((totalSeconds - timeLeft) / totalSeconds) * 100
@@ -37,22 +39,16 @@ export default function Timer({
 
   return (
     <div className="timer-container">
-      {/* 计时器 */}
       <div className={`timer-display ${isRunning && !isPaused ? 'running' : ''}`}>
         <svg className="timer-ring" viewBox="0 0 200 200">
           <defs>
             <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#6366f1" />
-              <stop offset="50%" stopColor="#a78bfa" />
-              <stop offset="100%" stopColor="#c084fc" />
+              <stop offset="0%" stopColor="var(--accent)" />
+              <stop offset="50%" stopColor="var(--accent-light)" />
+              <stop offset="100%" stopColor="var(--accent)" />
             </linearGradient>
           </defs>
-          <circle
-            className="timer-ring-bg"
-            cx="100"
-            cy="100"
-            r="90"
-          />
+          <circle className="timer-ring-bg" cx="100" cy="100" r="90" />
           <circle
             className="timer-ring-progress"
             cx="100"
@@ -68,55 +64,52 @@ export default function Timer({
             {formatTime(timeLeft)}
           </div>
           <div className="timer-label">
-            {isRunning ? (isPaused ? 'Paused' : 'Focusing') : 'Ready'}
+            {isRunning ? (isPaused ? t('timerPaused') : t('timerFocusing')) : t('timerReady')}
           </div>
         </div>
       </div>
 
-      {/* 控制按钮 */}
       <div className="timer-controls">
         {!isRunning ? (
           <button className="btn btn-primary btn-large" onClick={onStart}>
-            ▶ Start Focus
+            ▶ {t('timerStart')}
           </button>
         ) : (
           <>
             <button className="btn btn-secondary" onClick={onPause}>
-              {isPaused ? <><span>▶</span> Resume</> : <><span>⏸</span> Pause</>}
+              {isPaused ? <><span>▶</span> {t('timerResume')}</> : <><span>⏸</span> {t('timerPause')}</>}
             </button>
             <button className="btn btn-outline" onClick={onReset}>
-              <span>↺</span> Reset
+              <span>↺</span> {t('timerReset')}
             </button>
           </>
         )}
       </div>
 
-      {/* 提示音信息 */}
       <div className="sound-info">
         <div className="info-card">
-          <span className="info-label">Interval</span>
+          <span className="info-label">{t('infoInterval')}</span>
           <span className="info-value">
             {settings.intervalUnit === 'minutes'
-              ? `${settings.minInterval}-${settings.maxInterval} min`
-              : `${settings.minInterval}-${settings.maxInterval} sec`}
+              ? `${settings.minInterval}-${settings.maxInterval} ${t('settingsIntervalUnitMin')}`
+              : `${settings.minInterval}-${settings.maxInterval} ${t('settingsIntervalUnitSec')}`}
           </span>
         </div>
         <div className="info-card">
-          <span className="info-label">Next Sound</span>
+          <span className="info-label">{t('infoNextSound')}</span>
           <span className="info-value">
             {isRunning ? formatNextSound(nextSoundIn) : '--:--'}
           </span>
         </div>
       </div>
 
-      {/* 今日统计 */}
       <div className="today-stats">
-        <span>Today</span>
+        <span>{t('infoToday')}</span>
         <span className="stat-highlight">{todayStats.totalMinutes}</span>
-        <span>min</span>
+        <span>{t('infoMin')}</span>
         <span style={{ color: 'var(--text-muted)' }}>|</span>
         <span className="stat-highlight">{todayStats.sessionCount}</span>
-        <span>sessions</span>
+        <span>{t('infoSessions')}</span>
       </div>
     </div>
   );
