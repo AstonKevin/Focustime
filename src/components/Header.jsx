@@ -6,6 +6,7 @@ export default function Header({ currentView, setCurrentView }) {
 
   const tabs = [
     { id: 'timer', label: t('navFocus'), icon: '🎯' },
+    { id: 'todo', label: t('navTodo'), icon: '📝' },
     { id: 'settings', label: t('navSettings'), icon: '⚙️' },
     { id: 'statistics', label: t('navStats'), icon: '📊' }
   ];

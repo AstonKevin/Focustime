@@ -9,6 +9,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
   getSettings: () => ipcRenderer.invoke('get-settings'),
   saveSettings: (settings) => ipcRenderer.invoke('save-settings', settings),
 
+  // 待办
+  getTodos: () => ipcRenderer.invoke('get-todos'),
+  saveTodos: (todos) => ipcRenderer.invoke('save-todos', todos),
+
   // 文件选择
   selectAudioFile: () => ipcRenderer.invoke('select-audio-file')
 });

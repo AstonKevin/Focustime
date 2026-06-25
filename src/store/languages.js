@@ -7,6 +7,7 @@ export const LANGUAGES = {
     translations: {
       // 导航
       navFocus: '专注',
+      navTodo: '待办',
       navSettings: '设置',
       navStats: '统计',
 
@@ -89,6 +90,33 @@ export const LANGUAGES = {
       soundBirdDesc: '自然清新，放松心情',
       soundBowl: '颂钵声',
       soundBowlDesc: '冥想级音效，深度专注',
+
+      // 待办
+      todoTitle: '待办事项',
+      todoAdd: '添加待办',
+      todoPlaceholder: '输入待办内容...',
+      todoPriority: '优先级',
+      todoPriorityLow: '低',
+      todoPriorityMedium: '中',
+      todoPriorityHigh: '高',
+      todoTime: '时间',
+      todoTimeSpecific: '具体时间',
+      todoTimeRange: '时间段',
+      todoTimeRelative: '相对时间',
+      todoStart: '开始',
+      todoEnd: '结束',
+      todoToday: '今天',
+      todoTomorrow: '明天',
+      todoDaysLater: '天后',
+      todoSubmit: '添加',
+      todoCancel: '取消',
+      todoFilterAll: '全部',
+      todoFilterActive: '进行中',
+      todoFilterCompleted: '已完成',
+      todoFilterOverdue: '已过期',
+      todoEmpty: '暂无待办事项',
+      todoOverdue: '已过期',
+      todoDelete: '删除',
     }
   },
   en: {
@@ -98,6 +126,7 @@ export const LANGUAGES = {
     translations: {
       // Navigation
       navFocus: 'Focus',
+      navTodo: 'Todo',
       navSettings: 'Settings',
       navStats: 'Stats',
 
@@ -180,6 +209,33 @@ export const LANGUAGES = {
       soundBirdDesc: 'Fresh and natural',
       soundBowl: 'Singing Bowl',
       soundBowlDesc: 'Meditation-grade, deep focus',
+
+      // Todo
+      todoTitle: 'Todo List',
+      todoAdd: 'Add Todo',
+      todoPlaceholder: 'Enter todo...',
+      todoPriority: 'Priority',
+      todoPriorityLow: 'Low',
+      todoPriorityMedium: 'Medium',
+      todoPriorityHigh: 'High',
+      todoTime: 'Time',
+      todoTimeSpecific: 'Specific',
+      todoTimeRange: 'Range',
+      todoTimeRelative: 'Relative',
+      todoStart: 'Start',
+      todoEnd: 'End',
+      todoToday: 'Today',
+      todoTomorrow: 'Tomorrow',
+      todoDaysLater: ' days',
+      todoSubmit: 'Add',
+      todoCancel: 'Cancel',
+      todoFilterAll: 'All',
+      todoFilterActive: 'Active',
+      todoFilterCompleted: 'Done',
+      todoFilterOverdue: 'Overdue',
+      todoEmpty: 'No todos yet',
+      todoOverdue: 'Overdue',
+      todoDelete: 'Delete',
     }
   },
   ja: {
@@ -189,6 +245,7 @@ export const LANGUAGES = {
     translations: {
       // Navigation
       navFocus: '集中',
+      navTodo: 'TODO',
       navSettings: '設定',
       navStats: '統計',
 
@@ -271,6 +328,33 @@ export const LANGUAGES = {
       soundBirdDesc: '自然で清新',
       soundBowl: 'シンギングボウル',
       soundBowlDesc: '瞑想レベルの深い集中',
+
+      // Todo
+      todoTitle: 'TODOリスト',
+      todoAdd: '追加',
+      todoPlaceholder: 'TODOを入力...',
+      todoPriority: '優先度',
+      todoPriorityLow: '低',
+      todoPriorityMedium: '中',
+      todoPriorityHigh: '高',
+      todoTime: '時間',
+      todoTimeSpecific: '指定',
+      todoTimeRange: '期間',
+      todoTimeRelative: '相対',
+      todoStart: '開始',
+      todoEnd: '終了',
+      todoToday: '今日',
+      todoTomorrow: '明日',
+      todoDaysLater: '日後',
+      todoSubmit: '追加',
+      todoCancel: 'キャンセル',
+      todoFilterAll: '全て',
+      todoFilterActive: '進行中',
+      todoFilterCompleted: '完了',
+      todoFilterOverdue: '期限切れ',
+      todoEmpty: 'TODOなし',
+      todoOverdue: '期限切れ',
+      todoDelete: '削除',
     }
   }
 };

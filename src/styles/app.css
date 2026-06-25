@@ -1182,3 +1182,420 @@ body {
   background: var(--accent);
   color: white;
 }
+
+/* ==================== 待办事项 ==================== */
+.todo-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.todo-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* 待办表单 */
+.todo-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.form-row {
+  margin-bottom: 16px;
+}
+
+.form-row label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.todo-input:focus {
+  border-color: var(--accent);
+}
+
+.todo-input::placeholder {
+  color: var(--text-dim);
+}
+
+/* 优先级选择器 */
+.priority-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.priority-btn {
+  flex: 1;
+  padding: 10px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.priority-btn:hover {
+  background: var(--bg-tertiary);
+}
+
+.priority-btn.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border-color: var(--priority-color);
+}
+
+/* 时间类型选择器 */
+.time-type-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.time-type-btn {
+  flex: 1;
+  padding: 10px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.time-type-btn:hover {
+  background: var(--bg-tertiary);
+}
+
+.time-type-btn.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+/* 时间输入 */
+.time-input-row {
+  min-height: 50px;
+}
+
+.time-input {
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.time-input:focus {
+  border-color: var(--accent);
+}
+
+.time-range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.time-separator {
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+.days-select {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+}
+
+.days-select:focus {
+  border-color: var(--accent);
+}
+
+.days-select option {
+  background: var(--bg-primary);
+  color: var(--text);
+}
+
+/* 表单操作按钮 */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+/* 筛选器 */
+.todo-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-btn:hover {
+  background: var(--bg-secondary);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.filter-count {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+.filter-btn.active .filter-count {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 待办列表 */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-dim);
+}
+
+.empty-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.todo-empty p {
+  font-size: 15px;
+  margin: 0;
+}
+
+/* 待办项目 */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.2s;
+}
+
+.todo-item:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.todo-item.completed {
+  opacity: 0.6;
+}
+
+.todo-item.overdue {
+  border-left: 3px solid #ff4757;
+}
+
+/* 复选框 */
+.todo-checkbox {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--check-color, var(--border));
+  background: transparent;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.todo-checkbox:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.todo-item.completed .todo-checkbox {
+  background: var(--check-color, var(--accent));
+  border-color: var(--check-color, var(--accent));
+}
+
+/* 待办内容 */
+.todo-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.todo-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.todo-priority {
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.todo-time {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.todo-overdue-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: #ff4757;
+  background: rgba(255, 71, 87, 0.15);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* 删除按钮 */
+.todo-delete {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.todo-item:hover .todo-delete {
+  opacity: 1;
+}
+
+.todo-delete:hover {
+  background: rgba(255, 71, 87, 0.2);
+  color: #ff4757;
+}
+
+/* 响应式 */
+@media (max-width: 480px) {
+  .todo-container {
+    padding: 16px;
+  }
+
+  .priority-selector,
+  .time-type-selector {
+    flex-wrap: wrap;
+  }
+
+  .priority-btn,
+  .time-type-btn {
+    flex: 1 1 calc(50% - 4px);
+  }
+
+  .time-range-inputs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .time-separator {
+    display: none;
+  }
+
+  .time-input {
+    width: 100%;
+  }
+}

@@ -87,3 +87,14 @@ ipcMain.handle('select-audio-file', async () => {
   }
   return null;
 });
+
+// IPC 处理：获取待办
+ipcMain.handle('get-todos', () => {
+  return store.get('todos', []);
+});
+
+// IPC 处理：保存待办
+ipcMain.handle('save-todos', (event, todos) => {
+  store.set('todos', todos);
+  return true;
+});

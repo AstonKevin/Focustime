@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Timer from './components/Timer';
+import Todo from './components/Todo';
 import Settings from './components/Settings';
 import Statistics from './components/Statistics';
 import { SettingsProvider, useSettings } from './store/SettingsContext';
+import { TodoProvider } from './store/TodoContext';
 import { useTimer } from './hooks/useTimer';
 import { useRandomSound } from './hooks/useRandomSound';
 import { useStatistics } from './hooks/useStatistics';
@@ -77,6 +79,10 @@ function AppContent() {
           />
         )}
 
+        {currentView === 'todo' && (
+          <Todo />
+        )}
+
         {currentView === 'settings' && (
           <Settings
             settings={settings}
@@ -95,7 +101,9 @@ function AppContent() {
 export default function App() {
   return (
     <SettingsProvider>
-      <AppContent />
+      <TodoProvider>
+        <AppContent />
+      </TodoProvider>
     </SettingsProvider>
   );
 }
