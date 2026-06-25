@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSettings } from '../store/SettingsContext';
+import { THEMES } from '../store/themes';
 
 function formatTime(seconds) {
   const mins = Math.floor(seconds / 60);
@@ -28,7 +29,9 @@ export default function Timer({
   settings,
   todayStats
 }) {
-  const { t } = useSettings();
+  const { t, theme } = useSettings();
+  const currentTheme = THEMES[theme];
+  const timerEffect = currentTheme?.timerEffect || 'glow';
   const totalSeconds = settings.focusDuration * 60;
   const progress = totalSeconds > 0
     ? ((totalSeconds - timeLeft) / totalSeconds) * 100
@@ -39,7 +42,7 @@ export default function Timer({
 
   return (
     <div className="timer-container">
-      <div className={`timer-display ${isRunning && !isPaused ? 'running' : ''}`}>
+      <div className={`timer-display timer-effect-${timerEffect} ${isRunning && !isPaused ? 'running' : ''}`}>
         <svg className="timer-ring" viewBox="0 0 200 200">
           <defs>
             <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="0%">

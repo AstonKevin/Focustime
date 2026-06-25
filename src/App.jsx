@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import Timer from './components/Timer';
 import Todo from './components/Todo';
@@ -12,6 +12,8 @@ import { useStatistics } from './hooks/useStatistics';
 
 function AppContent() {
   const [currentView, setCurrentView] = useState('timer');
+  const [viewClass, setViewClass] = useState('view-enter');
+  const prevViewRef = useRef('timer');
   const { t, theme, lang, changeTheme, changeLang } = useSettings();
   const [settings, setSettings] = useState({
     focusDuration: 45,
@@ -52,6 +54,16 @@ function AppContent() {
     }
   };
 
+  const handleViewChange = (view) => {
+    if (view === prevViewRef.current) return;
+    setViewClass('view-exit');
+    setTimeout(() => {
+      prevViewRef.current = view;
+      setCurrentView(view);
+      setViewClass('view-enter');
+    }, 200);
+  };
+
   return (
     <div className="app">
       {/* 动态背景 */}
@@ -62,9 +74,9 @@ function AppContent() {
       </div>
       <div className="grid-bg"></div>
 
-      <Header currentView={currentView} setCurrentView={setCurrentView} />
+      <Header currentView={currentView} setCurrentView={handleViewChange} />
 
-      <main className="main-content">
+      <main className={`main-content ${viewClass}`}>
         {currentView === 'timer' && (
           <Timer
             timeLeft={timeLeft}
