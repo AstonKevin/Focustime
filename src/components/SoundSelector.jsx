@@ -209,8 +209,8 @@ export default function SoundSelector({ selectedSound, onSelect }) {
 
   return (
     <div className="sound-selector">
-      <p style={{ fontSize: '14px', color: 'var(--text-light)', marginBottom: '16px' }}>
-        选择一个提示音，点击播放按钮试听
+      <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
+        Choose a notification sound. Click play to preview.
       </p>
 
       {/* 预设音效网格 */}
@@ -240,12 +240,12 @@ export default function SoundSelector({ selectedSound, onSelect }) {
 
       {/* 自定义音效 */}
       <div className="custom-sound-section">
-        <p style={{ fontSize: '14px', color: 'var(--text-light)', marginBottom: '12px' }}>
-          或者选择自定义音频文件
+        <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '12px' }}>
+          Or use your own audio file
         </p>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <button className="btn btn-secondary" onClick={handleSelectCustom}>
-            📁 选择本地音频
+            📁 Choose Local File
           </button>
           {selectedSound && !PRESET_SOUNDS.find(s => s.id === selectedSound) && (
             <span className="sound-name">
@@ -253,7 +253,7 @@ export default function SoundSelector({ selectedSound, onSelect }) {
             </span>
           )}
         </div>
-        <p className="hint">支持 mp3、wav、ogg、m4a 格式</p>
+        <p className="hint">Supports mp3, wav, ogg, m4a formats</p>
       </div>
     </div>
   );

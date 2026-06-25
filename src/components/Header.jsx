@@ -2,14 +2,17 @@ import React from 'react';
 
 export default function Header({ currentView, setCurrentView }) {
   const tabs = [
-    { id: 'timer', label: '专注计时', icon: '🎯' },
-    { id: 'settings', label: '设置', icon: '⚙️' },
-    { id: 'statistics', label: '统计', icon: '📊' }
+    { id: 'timer', label: 'Focus', icon: '🎯' },
+    { id: 'settings', label: 'Settings', icon: '⚙️' },
+    { id: 'statistics', label: 'Stats', icon: '📊' }
   ];
 
   return (
     <header className="header">
-      <div className="header-title">专注计时器</div>
+      <div className="header-title">
+        <span className="logo-icon">⚡</span>
+        FocusPing
+      </div>
       <nav className="header-nav">
         {tabs.map(tab => (
           <button

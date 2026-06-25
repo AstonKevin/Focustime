@@ -12,11 +12,11 @@ export default function Settings({ settings, onSave }) {
 
   const handleSave = () => {
     if (localSettings.minInterval >= localSettings.maxInterval) {
-      alert('最短间隔必须小于最长间隔');
+      alert('Min interval must be less than max interval');
       return;
     }
     if (localSettings.minInterval < 1) {
-      alert('最短间隔不能小于1');
+      alert('Min interval cannot be less than 1');
       return;
     }
     onSave(localSettings);
@@ -26,13 +26,13 @@ export default function Settings({ settings, onSave }) {
 
   return (
     <div className="settings-container">
-      <h2>设置</h2>
+      <h2>Settings</h2>
 
-      {/* 专注时长 */}
+      {/* Focus Duration */}
       <div className="settings-section">
-        <h3>专注时长</h3>
+        <h3>⏱ Focus Duration</h3>
         <div className="setting-item">
-          <label>专注时长（分钟）</label>
+          <label>Duration (minutes)</label>
           <input
             type="number"
             min="1"
@@ -40,58 +40,58 @@ export default function Settings({ settings, onSave }) {
             value={localSettings.focusDuration}
             onChange={(e) => handleChange('focusDuration', parseInt(e.target.value) || 1)}
           />
-          <span className="unit">分钟</span>
+          <span className="unit">min</span>
         </div>
       </div>
 
-      {/* 提示音区间 */}
+      {/* Sound Interval */}
       <div className="settings-section">
-        <h3>提示音区间</h3>
+        <h3>🔔 Sound Interval</h3>
         <div className="setting-item">
-          <label>间隔单位</label>
+          <label>Unit</label>
           <select
             value={localSettings.intervalUnit}
             onChange={(e) => handleChange('intervalUnit', e.target.value)}
           >
-            <option value="seconds">秒</option>
-            <option value="minutes">分钟</option>
+            <option value="seconds">Seconds</option>
+            <option value="minutes">Minutes</option>
           </select>
         </div>
         <div className="setting-item">
-          <label>最短间隔</label>
+          <label>Min Interval</label>
           <input
             type="number"
             min="1"
             value={localSettings.minInterval}
             onChange={(e) => handleChange('minInterval', parseInt(e.target.value) || 1)}
           />
-          <span className="unit">{localSettings.intervalUnit === 'minutes' ? '分钟' : '秒'}</span>
+          <span className="unit">{localSettings.intervalUnit === 'minutes' ? 'min' : 'sec'}</span>
         </div>
         <div className="setting-item">
-          <label>最长间隔</label>
+          <label>Max Interval</label>
           <input
             type="number"
             min="1"
             value={localSettings.maxInterval}
             onChange={(e) => handleChange('maxInterval', parseInt(e.target.value) || 1)}
           />
-          <span className="unit">{localSettings.intervalUnit === 'minutes' ? '分钟' : '秒'}</span>
+          <span className="unit">{localSettings.intervalUnit === 'minutes' ? 'min' : 'sec'}</span>
         </div>
       </div>
 
-      {/* 提示音选择 */}
+      {/* Sound Selection */}
       <div className="settings-section">
-        <h3>提示音</h3>
+        <h3>🎵 Notification Sound</h3>
         <SoundSelector
           selectedSound={localSettings.soundFile}
           onSelect={(sound) => handleChange('soundFile', sound)}
         />
       </div>
 
-      {/* 保存按钮 */}
+      {/* Save Button */}
       <div className="settings-actions">
         <button className="btn btn-primary" onClick={handleSave}>
-          {saved ? '✓ 已保存' : '保存设置'}
+          {saved ? '✓ Saved' : 'Save Settings'}
         </button>
       </div>
     </div>

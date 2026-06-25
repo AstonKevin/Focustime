@@ -8,7 +8,7 @@ import { useRandomSound } from './hooks/useRandomSound';
 import { useStatistics } from './hooks/useStatistics';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState('timer'); // timer | settings | statistics
+  const [currentView, setCurrentView] = useState('timer');
   const [settings, setSettings] = useState({
     focusDuration: 45,
     minInterval: 3,
@@ -17,19 +17,16 @@ export default function App() {
     soundFile: null
   });
 
-  // 自定义 Hooks
   const { timeLeft, isRunning, isPaused, start, pause, reset, completionCount } = useTimer(settings.focusDuration);
   const { nextSoundIn, triggerSound } = useRandomSound(settings, isRunning);
   const { statistics, addSession, todayStats } = useStatistics();
 
-  // 计时完成时记录统计
   useEffect(() => {
     if (completionCount > 0) {
       addSession(settings.focusDuration);
     }
   }, [completionCount]);
 
-  // 加载设置
   useEffect(() => {
     if (window.electronAPI) {
       window.electronAPI.getSettings().then(saved => {
@@ -38,7 +35,6 @@ export default function App() {
     }
   }, []);
 
-  // 保存设置
   const handleSaveSettings = (newSettings) => {
     setSettings(newSettings);
     if (window.electronAPI) {
@@ -48,6 +44,14 @@ export default function App() {
 
   return (
     <div className="app">
+      {/* 动态背景 */}
+      <div className="bg-orbs">
+        <div className="bg-orb bg-orb-1"></div>
+        <div className="bg-orb bg-orb-2"></div>
+        <div className="bg-orb bg-orb-3"></div>
+      </div>
+      <div className="grid-bg"></div>
+
       <Header currentView={currentView} setCurrentView={setCurrentView} />
 
       <main className="main-content">

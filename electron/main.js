@@ -19,7 +19,7 @@ function createWindow() {
       nodeIntegration: false
     },
     titleBarStyle: 'hiddenInset',
-    title: '专注计时器'
+    title: 'FocusPing'
   });
 
   // 开发模式加载本地服务器，生产模式加载打包文件

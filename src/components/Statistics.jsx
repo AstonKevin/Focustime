@@ -1,15 +1,14 @@
 import React from 'react';
 
 export default function Statistics({ statistics }) {
-  // 计算总统计
   const totalMinutes = statistics.reduce((sum, s) => sum + s.duration, 0);
   const totalSessions = statistics.length;
   const totalHours = (totalMinutes / 60).toFixed(1);
   const avgDuration = totalSessions > 0 ? Math.round(totalMinutes / totalSessions) : 0;
 
-  // 最近7天数据
   const getLast7Days = () => {
     const days = [];
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     for (let i = 6; i >= 0; i--) {
       const date = new Date();
       date.setDate(date.getDate() - i);
@@ -19,7 +18,7 @@ export default function Statistics({ statistics }) {
       days.push({
         date: dateStr,
         label: `${date.getMonth() + 1}/${date.getDate()}`,
-        weekday: ['日', '一', '二', '三', '四', '五', '六'][date.getDay()],
+        weekday: dayNames[date.getDay()],
         minutes: dayMinutes,
         sessions: dayData.length
       });
@@ -32,27 +31,27 @@ export default function Statistics({ statistics }) {
 
   return (
     <div className="statistics-container">
-      <h2>专注统计</h2>
+      <h2>Statistics</h2>
 
-      {/* 总览卡片 */}
+      {/* Overview Cards */}
       <div className="stats-overview">
         <div className="stat-card">
           <div className="stat-value">{totalHours}</div>
-          <div className="stat-label">总时长（小时）</div>
+          <div className="stat-label">Total Hours</div>
         </div>
         <div className="stat-card">
           <div className="stat-value">{totalSessions}</div>
-          <div className="stat-label">总次数</div>
+          <div className="stat-label">Sessions</div>
         </div>
         <div className="stat-card">
           <div className="stat-value">{avgDuration}</div>
-          <div className="stat-label">平均时长（分钟）</div>
+          <div className="stat-label">Avg (min)</div>
         </div>
       </div>
 
-      {/* 最近7天图表 */}
+      {/* 7-Day Chart */}
       <div className="stats-chart">
-        <h3>📈 最近7天</h3>
+        <h3>📈 Last 7 Days</h3>
         <div className="bar-chart">
           {last7Days.map((day, index) => (
             <div key={index} className="bar-item">
@@ -60,32 +59,34 @@ export default function Statistics({ statistics }) {
                 <div
                   className="bar"
                   style={{
-                    height: day.minutes > 0 ? `${Math.max(8, (day.minutes / maxMinutes) * 100)}%` : '8px',
-                    opacity: day.minutes > 0 ? 1 : 0.3
+                    height: day.minutes > 0 ? `${Math.max(6, (day.minutes / maxMinutes) * 100)}%` : '6px',
+                    opacity: day.minutes > 0 ? 1 : 0.2
                   }}
                 >
                   {day.minutes > 0 && (
-                    <span className="bar-value">{day.minutes}分</span>
+                    <span className="bar-value">{day.minutes}m</span>
                   )}
                 </div>
               </div>
               <div className="bar-label">
                 <div>{day.weekday}</div>
-                <div style={{ fontSize: '11px', color: 'var(--text-lighter)' }}>{day.label}</div>
+                <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>{day.label}</div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* 最近记录 */}
+      {/* Recent Records */}
       <div className="stats-history">
-        <h3>📋 最近记录</h3>
+        <h3>📋 Recent Sessions</h3>
         {statistics.length === 0 ? (
           <div className="empty-hint">
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>🎯</div>
-            <div>暂无专注记录</div>
-            <div style={{ fontSize: '13px', marginTop: '8px' }}>开始你的第一次专注吧！</div>
+            <div>No sessions yet</div>
+            <div style={{ fontSize: '13px', marginTop: '8px', color: 'var(--text-muted)' }}>
+              Start your first focus session!
+            </div>
           </div>
         ) : (
           <div className="history-list">
@@ -93,7 +94,7 @@ export default function Statistics({ statistics }) {
               <div key={index} className="history-item">
                 <span className="history-date">📅 {record.date}</span>
                 <span className="history-time">🕐 {record.time}</span>
-                <span className="history-duration">{record.duration}分钟</span>
+                <span className="history-duration">{record.duration} min</span>
               </div>
             ))}
           </div>

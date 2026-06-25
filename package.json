@@ -1,7 +1,7 @@
 {
-  "name": "focus-timer",
-  "version": "1.0.0",
-  "description": "随机提示音专注计时器 - 通过随机间隔的提示音帮助维持注意力，实现长时间高效学习",
+  "name": "focus-ping",
+  "version": "1.1.0",
+  "description": "Random sound reminder focus timer - maintain attention with random notification sounds",
   "main": "electron/main.js",
   "author": "AstonKevin",
   "license": "MIT",
@@ -35,7 +35,7 @@
   },
   "build": {
     "appId": "com.focus-timer.app",
-    "productName": "专注计时器",
+    "productName": "FocusPing",
     "files": [
       "dist/**/*",
       "electron/**/*"
