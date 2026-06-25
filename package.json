@@ -1,0 +1,47 @@
+{
+  "name": "focus-timer",
+  "version": "1.0.0",
+  "description": "随机提示音专注计时器 - 通过随机间隔的提示音帮助维持注意力，实现长时间高效学习",
+  "main": "electron/main.js",
+  "author": "AstonKevin",
+  "license": "MIT",
+  "homepage": "https://github.com/AstonKevin/Focustime",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AstonKevin/Focustime.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "concurrently": "^8.2.0",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.0",
+    "vite": "^5.0.0",
+    "wait-on": "^7.0.0"
+  },
+  "build": {
+    "appId": "com.focus-timer.app",
+    "productName": "专注计时器",
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    }
+  }
+}
